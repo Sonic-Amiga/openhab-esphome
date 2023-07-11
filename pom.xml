@@ -7,10 +7,10 @@
   <parent>
     <groupId>org.openhab.addons.bundles</groupId>
     <artifactId>org.openhab.addons.reactor.bundles</artifactId>
-    <version>3.4.3</version>
+    <version>3.2.0</version>
+    <!-- For standalone repo. Remove when integrating upsteam -->
+    <relativePath>../openhab-addons/bundles</relativePath>
   </parent>
-
-  <version>3.4.4-SNAPSHOT</version>
 
   <artifactId>no.seime.openhab.binding.esphome</artifactId>
 
