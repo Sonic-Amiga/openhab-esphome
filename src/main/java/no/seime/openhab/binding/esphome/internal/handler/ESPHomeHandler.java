@@ -271,7 +271,8 @@ public class ESPHomeHandler extends BaseThingHandler implements PacketListener, 
 
     private void handleConnected(GeneratedMessageV3 message) throws ProtocolAPIError {
         logger.info("[{}] Received message {}", config.hostname, message);
-        if (message instanceof DeviceInfoResponse rsp) {
+        if (message instanceof DeviceInfoResponse) {
+            DeviceInfoResponse rsp = (DeviceInfoResponse) message;
             Map<String, String> props = new HashMap<>();
             props.put("esphome_version", rsp.getEsphomeVersion());
             props.put("mac_address", rsp.getMacAddress());
@@ -319,7 +320,8 @@ public class ESPHomeHandler extends BaseThingHandler implements PacketListener, 
     }
 
     private void handleLoginResponse(GeneratedMessageV3 message) throws ProtocolAPIError {
-        if (message instanceof ConnectResponse connectResponse) {
+        if (message instanceof ConnectResponse) {
+            ConnectResponse connectResponse = (ConnectResponse) message;
             logger.debug("[{}] Received login response {}", config.hostname, connectResponse);
 
             if (connectResponse.getInvalidPassword()) {
@@ -374,7 +376,8 @@ public class ESPHomeHandler extends BaseThingHandler implements PacketListener, 
     }
 
     private void handleHelloResponse(GeneratedMessageV3 message) throws ProtocolAPIError {
-        if (message instanceof HelloResponse helloResponse) {
+        if (message instanceof HelloResponse) {
+            HelloResponse helloResponse = (HelloResponse) message;
             logger.debug("[{}] Received hello response {}", config.hostname, helloResponse);
             logger.info("[{}] Server {} running {} on protocol version {}.{}", config.hostname, helloResponse.getName(),
                     helloResponse.getServerInfo(), helloResponse.getApiVersionMajor(),
